@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <script>
+
+            function computerPlay() {
+                const choices = ['Rock', 'Paper', 'Scissors']
+                return choices[Math.floor(Math.random()*choices.length)];
+            }
+
+            function singleRound(playerSelection, computerSelection){
+                const player_choices = ['Rock', 'Paper', 'Scissors']
+                if(player_choices.includes(playerSelection, computerSelection)) {
+                    if(playerSelection=='Rock') {
+                        if(computerSelection=='Paper') {
+                            return 'You lose! Paper beats rock.'
+                        } else if(computerSelection=='Scissors') {
+                            return 'You win! Rock beats scissors.'
+                        } else {
+                            return 'You tied.'
+                        }
+                    } else if(playerSelection=='Paper') {
+                        if(computerSelection=='Scissors') {
+                            return 'You lose! Scissors beats paper.'
+                        } else if (computerSelection=='Rock') {
+                            return 'You win! Paper beats rock.'
+                        } else {
+                            return 'You tied.'
+                        }
+                    } else {
+                        if(computerSelection == 'Rock') {
+                            return 'You lose! Rock beats scissors.'
+                        } else if (computerSelection=='Paper') {
+                            return 'You win! Scissors beats paper.'
+                        } else {
+                            return 'You tied.'
+                        }
+                    }
+                } else {
+                    return 'Please make a choice that is rock, paper or scissors!'
+                }
+            }
+
+            function playRound(playerSelection, computerSelection){
+                const player_choices = ['Rock', 'Paper', 'Scissors']
+                if(player_choices.includes(playerSelection, computerSelection)) {
+                    if(playerSelection=='Rock') {
+                        if(computerSelection=='Paper') {
+                            return 'False'
+                        } else if(computerSelection=='Scissors') {
+                            return 'True'
+                        } else {
+                            return 'You tied.'
+                        }
+                    } else if(playerSelection=='Paper') {
+                        if(computerSelection=='Scissors') {
+                            return 'False'
+                        } else if (computerSelection=='Rock') {
+                            return 'True'
+                        } else {
+                            return 'You tied.'
+                        }
+                    } else {
+                        if(computerSelection == 'Rock') {
+                            return 'False'
+                        } else if (computerSelection=='Paper') {
+                            return 'True'
+                        } else {
+                            return 'You tied.'
+                        }
+                    }
+                } else {
+                    return 'Please make a choice that is rock, paper or scissors!'
+                }
+            }
+        
+
+        function game() {
+            let comp_score = 0;
+            let player_score = 0; 
+            let max_round = 5; 
+            let n = 0;
+
+            while(n < max_round) {
+                let answer = window.prompt('Pick either Rock, Paper or Scissors! (Make sure the first letter is capitalized.');
+                let x = playRound(answer, computerPlay());
+                if(x=='True'){
+                    player_score++;
+                    n++;
+                    console.log('You win this round!')
+                    if(player_score==3) {
+                        return 'You win the game and defeated the AI!'
+                    }
+                } else if(x=='False'){
+                    comp_score++;
+                    n++;
+                    console.log('The computer wins this round!')
+                    if(comp_score==3) {
+                        return 'The computer wins this game and defeated you!'
+                    }
+                } else {
+                    console.log('It is a tie for this round!')
+                }
+            }
+        }
+        </script>
+    </body>
+</html>
